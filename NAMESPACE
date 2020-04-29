@@ -1,0 +1,10 @@
+export(survSensitivity)
+export(comprSensitivity)
+export(plotsens)
+
+import(directlabels)
+import(ggplot2)
+import(survival)
+
+importFrom("grDevices", "dev.off", "pdf")
+importFrom("stats", "binomial", "dnorm", "glm", "glm.control", "optim", "pnorm", "rbinom", "var")
