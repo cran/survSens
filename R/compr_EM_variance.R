@@ -12,14 +12,14 @@ compr_EM_variance <- function(data, zetat, zetaz, z.coef, B = 1000){
   X1 = cbind(1,data.matrix(data[,4:(3+nx)]))
   XZ = data.matrix(data[,c(4:(3+nx),3)]) #put X and Z together
 
-  #CoxPH model for t1
+  # CoxPH model for t1
   U.fit1 = coxph(Surv(t,d1) ~ XZ + offset(u1), data = data)
   bh1 = basehaz(U.fit1, centered=F)
   K1 = dim(bh1)[1] #number of distinct time for t1
   bh1[,1] = bh1[,1]/exp(mean(data$u1))
   bh1$lambda = bh1[,1] - c(0,bh1[1:(K1-1),1])
 
-  #CoxPH model for t2
+  # CoxPH model for t2
   U.fit2 = coxph(Surv(t,d2) ~ XZ + offset(u2), data = data)
   bh2 = basehaz(U.fit2, centered=F)
   K2 = dim(bh2)[1] #number of distinct time for t2
@@ -113,8 +113,8 @@ compr_EM_variance <- function(data, zetat, zetaz, z.coef, B = 1000){
 
   I_theta = l2 - SS
   coef.se = sqrt(diag(solve(I_theta)))
-  return(list(t1.coef = U.fit1$coeff, t1.coef.se=coef.se[1:(nx + 1)],
-              t2.coef = U.fit2$coeff, t2.coef.se=coef.se[(dim_t1 + 1):(dim_t1 + nx + 1)]))
+  return (list(t1.coef = U.fit1$coeff, t1.coef.se=coef.se[1:(nx + 1)],
+               t2.coef = U.fit2$coeff, t2.coef.se=coef.se[(dim_t1 + 1):(dim_t1 + nx + 1)]))
 }
 
 ss_compr <- function(data, zetat, zetaz, U.fit1, U.fit2, z.coef, nx, XZ, X1, bh1, bh2){

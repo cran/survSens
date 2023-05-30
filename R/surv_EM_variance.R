@@ -76,7 +76,7 @@ surv_EM_variance <- function(data, zetat, zetaz, z.coef, B = 1000){
 
   I_theta = l2 - SS
   coef.se = sqrt(diag(solve(I_theta)))
-  return(list(coef = U.fit1$coeff, coef.se=coef.se[1:(nx+1)]))
+  return (list(coef = U.fit1$coeff, coef.se = coef.se[1:(nx+1)]))
 }
 
 ss <- function(data, zetat, zetaz, U.fit1, z.coef, nx, XZ, X1, bh1){

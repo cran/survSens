@@ -2,8 +2,10 @@ export(survSensitivity)
 export(comprSensitivity)
 export(plotsens)
 
-import(directlabels)
 import(ggplot2)
+import(interp)
+import(metR)
+import(reshape2)
 import(survival)
 
 importFrom("grDevices", "dev.off", "pdf")
